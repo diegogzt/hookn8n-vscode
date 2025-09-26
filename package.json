@@ -6,11 +6,11 @@
   "publisher": "dgtovar",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dgtovar/hookn8n-vscode"
+    "url": "https://github.com/diegogzt/hookn8n-vscode.git"
   },
-  "homepage": "https://github.com/dgtovar/hookn8n-vscode#readme",
+  "homepage": "https://github.com/diegogzt/hookn8n-vscode#readme",
   "bugs": {
-    "url": "https://github.com/dgtovar/hookn8n-vscode/issues"
+    "url": "https://github.com/diegogzt/hookn8n-vscode/issues"
   },
   "engines": {
     "vscode": "^1.74.0"

@@ -79,8 +79,8 @@
 
 ### Instalación local
 ```bash
-git clone https://github.com/dgtovar/ai-code-assistant-vscode
-cd ai-code-assistant-vscode
+git clone https://github.com/dgtovar/hookn8n-vscode
+cd hookn8n-vscode
 npm install
 npm run compile
 ```
@@ -116,7 +116,7 @@ Este proyecto está bajo la Licencia MIT. Consulta [LICENSE](LICENSE) para más 
 
 ## 🐛 Reportar Bugs
 
-¿Encontraste un problema? [Reporta un issue](https://github.com/dgtovar/ai-code-assistant-vscode/issues)
+¿Encontraste un problema? [Reporta un issue](https://github.com/dgtovar/hookn8n-vscode/issues)
 
 ## 📧 Contacto
 

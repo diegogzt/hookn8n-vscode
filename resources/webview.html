@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Code Assistant</title>
+    <link rel="stylesheet" href="../media/chatbot.css" />
+  </head>
+  <body>
+    <div class="chat-container">
+      <!-- Header principal -->
+      <header class="chat-header">
+        <h1>
+          <img
+            src="../media/icons/chatbot-icon.svg"
+            alt="AI Assistant Icon"
+            class="chat-icon"
+          />
+          AI Code Assistant
+        </h1>
+      </header>
+
+      <!-- Configuración del webhook -->
+      <div class="webhook-config" id="webhookConfig">
+        <div class="webhook-input-container">
+          <label for="webhookInput" class="webhook-label">
+            <span style="color: var(--primary-light);"></span>🔗</span> Webhook de N8N (Opcional):
+          </label>
+          <input
+            type="url"
+            id="webhookInput"
+            class="webhook-input"
+            placeholder="https://tu-n8n.com/webhook/chatbot"
+          />
+        </div>
+        <div class="webhook-controls">
+          <button id="testButton" class="test-button">
+            <span style="margin-right: 4px;">⚙️</span>Probar Conexión
+          </button>
+          <div id="webhookStatus" class="webhook-status disconnected">
+            <span class="status-indicator"></span>
+            Sin configurar
+          </div>
+          <button id="toggleConfig" class="toggle-config">
+            <span style="margin-right: 4px;">❓</span>Ayuda
+          </button>
+        </div>
+        <div id="webhookHelp" class="webhook-help">
+          <strong><span style="color: var(--primary-light);">💡</span> Cómo configurar:</strong><br />
+          1. Crea un webhook en N8N que reciba POST<br />
+          2. El webhook recibirá: {"message": "texto", "timestamp": "..."}<br />
+          3. Puede responder JSON: {"response": "respuesta"} o texto plano<br />
+          4. Pega la URL aquí y haz clic en "Probar Conexión"
+        </div>
+      </div>
+
+      <!-- Área de mensajes -->
+      <main class="chat-messages" id="chatMessages">
+        <!-- Los mensajes se agregarán dinámicamente aquí -->
+      </main>
+
+      <!-- Área de entrada -->
+      <div class="input-area">
+        <textarea
+          id="messageInput"
+          placeholder="Escribe tu pregunta aquí..."
+          rows="1"
+          maxlength="1000"
+          autocomplete="off"
+          spellcheck="true"
+        ></textarea>
+        <button id="sendButton" title="Enviar mensaje (Enter)">
+          <img src="../media/icons/send-icon.svg" alt="Enviar" />
+        </button>
+      </div>
+
+      <!-- Información de entrada -->
+      <div class="input-info">
+        <span id="charCount">0/1000</span>
+        <div class="action-buttons">
+          <button class="action-button" onclick="clearChat()">
+            <span class="icon-margin">🗑️</span>Limpiar
+          </button>
+          <button class="action-button" onclick="exportChat()">
+            <span class="icon-margin">📥</span>Exportar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Funciones adicionales
+      function clearChat() {
+        if (
+          confirm("¿Estás seguro de que quieres limpiar toda la conversación?")
+        ) {
+          const chatMessages = document.getElementById("chatMessages");
+          chatMessages.innerHTML = "";
+          // Reenviar mensaje de bienvenida
+          setTimeout(() => {
+            appendMessage(
+              "bot",
+              "¡Conversación limpiada! Soy tu AI Code Assistant. ¿En qué puedo ayudarte ahora?",
+              getCurrentTime()
+            );
+          }, 500);
+        }
+      }
+
+      function exportChat() {
+        const messages = document.querySelectorAll(".message");
+        let chatText = "AI Code Assistant - Conversación exportada\n";
+        chatText += "=".repeat(50) + "\n\n";
+
+        messages.forEach((message) => {
+          const isUser = message.classList.contains("user-message");
+          const sender = isUser ? "Usuario" : "AI Assistant";
+          const text = message.querySelector(".message-text").textContent;
+          const time = message.querySelector(".message-time").textContent;
+
+          chatText += `[${time}] ${sender}: ${text}\n\n`;
+        });
+
+        // Descargar archivo
+        const blob = new Blob([chatText], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `ai-assistant-conversation-${
+          new Date().toISOString().split("T")[0]
+        }.txt`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }
+
+      // Funciones auxiliares que el script principal necesita
+      function getCurrentTime() {
+        return new Date().toLocaleTimeString("es-ES", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+      }
+
+      function appendMessage(sender, text, timestamp) {
+        // Esta función será definida en el script principal
+        console.log("appendMessage called:", sender, text, timestamp);
+      }
+    </script>
+    <script src="../media/chatbot.js"></script>
+  </body>
+</html>

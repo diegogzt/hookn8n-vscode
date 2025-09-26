@@ -1,0 +1,107 @@
+{
+  "name": "ai-code-assistant",
+  "displayName": "AI Code Assistant",
+  "description": "Asistente inteligente de programación con IA, webhooks N8N y capacidades RAG",
+  "version": "1.0.0",
+  "publisher": "dgtovar",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dgtovar/ai-code-assistant-vscode"
+  },
+  "homepage": "https://github.com/dgtovar/ai-code-assistant-vscode#readme",
+  "bugs": {
+    "url": "https://github.com/dgtovar/ai-code-assistant-vscode/issues"
+  },
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other",
+    "Machine Learning",
+    "Snippets"
+  ],
+  "keywords": [
+    "ai",
+    "assistant",
+    "chatbot",
+    "programming",
+    "code-help",
+    "n8n",
+    "webhook",
+    "automation",
+    "rag",
+    "artificial-intelligence"
+  ],
+  "galleryBanner": {
+    "color": "#4239c8",
+    "theme": "dark"
+  },
+  "activationEvents": [
+    "onCommand:chatbot.start",
+    "onCommand:chatbot.showInSidebar",
+    "onView:chatbotView"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "chatbot.start",
+        "title": "Abrir AI Code Assistant",
+        "category": "AI Assistant",
+        "icon": "$(comment-discussion)"
+      },
+      {
+        "command": "chatbot.showInSidebar",
+        "title": "AI Code Assistant",
+        "icon": "$(robot)"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "chatbotView",
+          "name": "AI Code Assistant",
+          "when": "true",
+          "icon": "$(robot)",
+          "contextualTitle": "AI Code Assistant"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "chatbotView",
+        "contents": "¡Bienvenido a AI Code Assistant! 🤖\n\nAsistente inteligente de programación con IA y capacidades avanzadas.\n\n[Abrir AI Assistant](command:chatbot.start)\n\n[⚙️ Configurar Webhook N8N](command:chatbot.start)\n\nCaracterísticas:\n• Respuestas inteligentes con IA\n• Integración con N8N\n• Interfaz moderna Purple Heart\n• Automatización de tareas\n• Historial persistente"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "chatbot.start",
+          "when": "view == chatbotView",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "chatbot.start",
+          "when": "true"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "typescript": "^4.9.4",
+    "webpack": "^5.58.2",
+    "webpack-cli": "^4.9.1"
+  }
+}

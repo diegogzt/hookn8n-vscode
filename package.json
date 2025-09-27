@@ -1,9 +1,10 @@
 {
-  "name": "ai-code-assistant",
-  "displayName": "AI Code Assistant",
-  "description": "Intelligent AI programming assistant with N8N webhooks and RAG capabilities",
-  "version": "1.0.0",
+  "name": "n8n-webhook-chat",
+  "displayName": "N8N Webhook Chat",
+  "description": "N8N webhook-powered chat assistant with AI capabilities for VS Code",
+  "version": "1.0.1",
   "publisher": "dgtovar",
+  "icon": "media/extension-icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/diegogzt/hookn8n-vscode.git"
@@ -46,13 +47,13 @@
     "commands": [
       {
         "command": "chatbot.start",
-        "title": "Open AI Code Assistant",
-        "category": "AI Assistant",
+        "title": "Open N8N Webhook Chat",
+        "category": "N8N Chat",
         "icon": "$(comment-discussion)"
       },
       {
         "command": "chatbot.showInSidebar",
-        "title": "AI Code Assistant",
+        "title": "N8N Webhook Chat",
         "icon": "$(robot)"
       }
     ],
@@ -60,17 +61,17 @@
       "explorer": [
         {
           "id": "chatbotView",
-          "name": "AI Code Assistant",
+          "name": "N8N Webhook Chat",
           "when": "true",
           "icon": "$(robot)",
-          "contextualTitle": "AI Code Assistant"
+          "contextualTitle": "N8N Webhook Chat"
         }
       ]
     },
     "viewsWelcome": [
       {
         "view": "chatbotView",
-        "contents": "Welcome to AI Code Assistant! 🤖\n\nIntelligent AI programming assistant with advanced capabilities.\n\n[Open AI Assistant](command:chatbot.start)\n\n[⚙️ Configure N8N Webhook](command:chatbot.start)\n\nFeatures:\n• Intelligent AI responses\n• N8N Integration\n• Modern Purple Heart interface\n• Task automation\n• Persistent history"
+        "contents": "Welcome to N8N Webhook Chat! 🤖\n\nN8N webhook-powered chat assistant for developers.\n\n[Open N8N Chat](command:chatbot.start)\n\n[⚙️ Configure N8N Webhook](command:chatbot.start)\n\nFeatures:\n• N8N webhook integration\n• Real-time chat responses\n• Modern interface\n• Custom workflow automation\n• Persistent history"
       }
     ],
     "menus": {

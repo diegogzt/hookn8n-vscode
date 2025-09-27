@@ -1,83 +1,91 @@
-# AI Code Assistant - VS Code Extension
+# N8N Webhook Chat - VS Code Extension
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://marketplace.visualstudio.com/items?itemName=dgtovar.ai-code-assistant)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://marketplace.visualstudio.com/items?itemName=dgtovar.n8n-webhook-chat)
 [![Visual Studio Code](https://img.shields.io/badge/VS%20Code-^1.74.0-brightgreen.svg)](https://code.visualstudio.com/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 ## 🤖 Description
 
-**AI Code Assistant** is an intelligent Visual Studio Code extension that provides an advanced AI programming assistant. Designed for developers seeking a modern and efficient tool to get code help, solve technical problems, and automate development tasks through N8N webhooks.
+**N8N Webhook Chat** is a Visual Studio Code extension that provides a powerful chat interface connected to N8N webhooks. Designed for developers who want to integrate their VS Code environment with N8N automation workflows and custom AI assistants.
 
 ## ✨ Key Features
 
-- 🎯 **Intelligent Assistant**: Contextual responses for programming questions
-- 🔗 **N8N Integration**: Connect with custom webhooks for automation
-- 🎨 **Modern Interface**: Purple Heart design with elegant dark theme
+- 🔗 **N8N Webhook Integration**: Direct connection to your N8N workflows
+- � **Real-time Chat**: Instant communication with your automation systems
+- 🎨 **Modern Interface**: Clean and intuitive design
 - 📱 **Responsive**: Adapts to different panel sizes
-- 💾 **Persistence**: Saves configuration and conversation history
-- ⚡ **Fast**: Instant responses without interrupting your workflow
-- 🔧 **Configurable**: Multiple customization options
+- 💾 **Persistence**: Saves webhook configuration and chat history
+- ⚡ **Fast**: Instant webhook responses without interrupting workflow
+- 🔧 **Configurable**: Easy webhook URL configuration
 
 ## 🚀 Installation
 
 1. **From VS Code Marketplace**:
+
    - Open VS Code
    - Go to Extensions (`Ctrl+Shift+X`)
-   - Search for "AI Code Assistant"
+   - Search for "N8N Webhook Chat"
    - Click "Install"
 
 2. **Manual Installation**:
    ```bash
-   code --install-extension dgtovar.ai-code-assistant
+   code --install-extension dgtovar.n8n-webhook-chat
    ```
 
 ## 📖 Usage
 
 ### Quick Access
-- **Command Palette**: `Ctrl+Shift+P` → "AI Code Assistant"
-- **Sidebar**: "AI Code Assistant" panel in explorer
+
+- **Command Palette**: `Ctrl+Shift+P` → "N8N Webhook Chat"
+- **Sidebar**: "N8N Webhook Chat" panel in explorer
 - **Context Menu**: Right-click on files
 
 ### N8N Webhook Configuration
+
 1. Open the chatbot
 2. Configure your webhook URL in the top section
 3. Click "Test Connection"
 4. Done! The chatbot will use your custom webhook
 
 ### Available Commands
-- `chatbot.start`: Open AI Code Assistant
+
+- `chatbot.start`: Open N8N Webhook Chat
 - `chatbot.showInSidebar`: Show in sidebar
 
 ## 🔧 Configuration
 
 ### N8N Webhook
+
 ```json
 {
   "message": "Your question here",
-  "timestamp": "2025-09-26T10:30:00.000Z", 
-  "source": "ai-code-assistant"
+  "timestamp": "2025-09-26T10:30:00.000Z",
+  "source": "n8n-webhook-chat"
 }
 ```
 
 **Expected Response**:
+
 - JSON: `{"response": "Bot response"}`
 - Plain text: `"Direct response"`
 
 ## 🎨 Screenshots
 
 - Main interface with Purple Heart theme
-- Sidebar panel integrated in VS Code  
+- Sidebar panel integrated in VS Code
 - N8N webhook configuration
 - Example conversation with code
 
 ## 🛠️ Development
 
 ### Requirements
+
 - Node.js >= 16.x
 - TypeScript >= 4.9.x
 - VS Code >= 1.74.0
 
 ### Local Installation
+
 ```bash
 git clone https://github.com/diegogzt/hookn8n-vscode.git
 cd hookn8n-vscode
@@ -86,6 +94,7 @@ npm run compile
 ```
 
 ### Package
+
 ```bash
 npm install -g vsce
 vsce package
@@ -94,9 +103,10 @@ vsce package
 ## 📝 Changelog
 
 ### v1.0.0
+
 - 🎉 Initial release
-- ✨ Purple Heart interface with dark theme
-- 🔗 Complete integration with N8N webhooks
+- 🔗 Complete N8N webhook integration
+- � Real-time chat interface
 - 📱 Responsive and modern design
 - ⚡ Performance optimization
 

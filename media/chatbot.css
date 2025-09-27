@@ -74,7 +74,8 @@ body {
   position: relative;
 }
 
-/* Header mejorado */
+/* Header mejorado - REMOVIDO EN v1.0.2 */
+/*
 .chat-header {
   background: var(--gradient-primary);
   padding: 16px 20px;
@@ -99,6 +100,7 @@ body {
   height: 24px;
   filter: brightness(0) invert(1);
 }
+*/
 
 /* Configuración del webhook */
 .webhook-config {

@@ -2,7 +2,7 @@
   "name": "n8n-webhook-chat",
   "displayName": "N8N Webhook Chat",
   "description": "N8N webhook-powered chat assistant with AI capabilities for VS Code",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "dgtovar",
   "icon": "media/extension-icon.png",
   "repository": {

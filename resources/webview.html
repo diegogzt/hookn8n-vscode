@@ -2,31 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta na          <button class="action-button" onclick="exportChat()">
-            <span class="icon-margin">📅</span>Export
-          </button>"viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Code Assistant</title>
     <link rel="stylesheet" href="../media/chatbot.css" />
   </head>
   <body>
     <div class="chat-container">
-      <!-- Header principal -->
-      <header class="chat-header">
-        <h1>
-          <img
-            src="../media/icons/chatbot-icon.svg"
-            alt="AI Assistant Icon"
-            class="chat-icon"
-          />
-          AI Code Assistant
-        </h1>
-      </header>
-
       <!-- Configuración del webhook -->
       <div class="webhook-config" id="webhookConfig">
         <div class="webhook-input-container">
           <label for="webhookInput" class="webhook-label">
-            <span class="icon-primary">🔗</span> N8N Webhook (Optional):
+            <span class="icon-primary">🔗</span> N8N Webhook:
           </label>
           <input
             type="url"
@@ -48,9 +34,11 @@
           </button>
         </div>
         <div id="webhookHelp" class="webhook-help">
-          <strong><span class="icon-primary">💡</span> How to configure:</strong><br />
+          <strong><span class="icon-primary">💡</span> How to configure:</strong
+          ><br />
           1. Create an N8N webhook that receives POST<br />
-          2. The webhook will receive: {"message": "text", "timestamp": "..."}<br />
+          2. The webhook will receive: {"message": "text", "timestamp":
+          "..."}<br />
           3. Can respond JSON: {"response": "response"} or plain text<br />
           4. Paste the URL here and click "Test Connection"
         </div>
@@ -84,7 +72,7 @@
             <span class="icon-margin">🗑️</span>Clear
           </button>
           <button class="action-button" onclick="exportChat()">
-            <span class="icon-margin">📥</span>Exportar
+            <span class="icon-margin">📥</span>Export
           </button>
         </div>
       </div>

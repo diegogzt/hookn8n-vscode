@@ -1,7 +1,7 @@
 {
   "name": "ai-code-assistant",
   "displayName": "AI Code Assistant",
-  "description": "Asistente inteligente de programación con IA, webhooks N8N y capacidades RAG",
+  "description": "Intelligent AI programming assistant with N8N webhooks and RAG capabilities",
   "version": "1.0.0",
   "publisher": "dgtovar",
   "repository": {
@@ -46,7 +46,7 @@
     "commands": [
       {
         "command": "chatbot.start",
-        "title": "Abrir AI Code Assistant",
+        "title": "Open AI Code Assistant",
         "category": "AI Assistant",
         "icon": "$(comment-discussion)"
       },
@@ -70,7 +70,7 @@
     "viewsWelcome": [
       {
         "view": "chatbotView",
-        "contents": "¡Bienvenido a AI Code Assistant! 🤖\n\nAsistente inteligente de programación con IA y capacidades avanzadas.\n\n[Abrir AI Assistant](command:chatbot.start)\n\n[⚙️ Configurar Webhook N8N](command:chatbot.start)\n\nCaracterísticas:\n• Respuestas inteligentes con IA\n• Integración con N8N\n• Interfaz moderna Purple Heart\n• Automatización de tareas\n• Historial persistente"
+        "contents": "Welcome to AI Code Assistant! 🤖\n\nIntelligent AI programming assistant with advanced capabilities.\n\n[Open AI Assistant](command:chatbot.start)\n\n[⚙️ Configure N8N Webhook](command:chatbot.start)\n\nFeatures:\n• Intelligent AI responses\n• N8N Integration\n• Modern Purple Heart interface\n• Task automation\n• Persistent history"
       }
     ],
     "menus": {

@@ -33,7 +33,7 @@ export function activate(context: vscode.ExtensionContext) {
     const ragService = new RagService();
     panel.webview.html = getWebviewContent(panel.webview, context.extensionUri);
 
-    // Manejar mensajes del webview
+    // Handle webview messages
     panel.webview.onDidReceiveMessage(
       async (message: any) => {
         switch (message.command) {
@@ -51,7 +51,7 @@ export function activate(context: vscode.ExtensionContext) {
             } catch (error) {
               panel.webview.postMessage({
                 command: "receiveMessage",
-                text: "Error: No se pudo procesar tu mensaje.",
+                text: "Error: Could not process your message.",
                 timestamp: new Date().toLocaleTimeString("es-ES", {
                   hour: "2-digit",
                   minute: "2-digit",
@@ -61,12 +61,12 @@ export function activate(context: vscode.ExtensionContext) {
             break;
 
           case "saveConfig":
-            // Guardar configuración en el workspace
+            // Save configuration to workspace
             context.globalState.update(message.key, message.value);
             break;
 
           case "loadConfig":
-            // Enviar configuración guardada
+            // Send saved configuration
             const savedWebhookUrl = context.globalState.get("webhookUrl", "");
             panel.webview.postMessage({
               command: "configLoaded",
@@ -182,7 +182,7 @@ function getWebviewContent(
                 🔴 Desconectado
             </div>
             <div class="action-buttons">
-                <button id="toggleConfig" class="toggle-config">Ocultar configuración</button>
+                <button id="toggleConfig" class="toggle-config">Hide configuration</button>
             </div>
         </div>
 
@@ -191,13 +191,13 @@ function getWebviewContent(
         <div class="input-area">
             <textarea 
                 id="messageInput" 
-                placeholder="Escribe tu pregunta aquí..." 
+                placeholder="Write your question here..." 
                 rows="1" 
                 maxlength="1000"
                 autocomplete="off"
                 spellcheck="true"
             ></textarea>
-            <button id="sendButton" title="Enviar mensaje (Enter)">
+            <button id="sendButton" title="Send message (Enter)">
                 <img src="${sendIconUri}" alt="Enviar">
             </button>
         </div>

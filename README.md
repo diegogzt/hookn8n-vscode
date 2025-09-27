@@ -4,80 +4,80 @@
 [![Visual Studio Code](https://img.shields.io/badge/VS%20Code-^1.74.0-brightgreen.svg)](https://code.visualstudio.com/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-## 🤖 Descripción
+## 🤖 Description
 
-**AI Code Assistant** es una extensión inteligente para Visual Studio Code que proporciona un asistente de programación avanzado con IA. Diseñada para desarrolladores que buscan una herramienta moderna y eficiente para obtener ayuda con código, resolver problemas técnicos y automatizar tareas de desarrollo mediante webhooks N8N.
+**AI Code Assistant** is an intelligent Visual Studio Code extension that provides an advanced AI programming assistant. Designed for developers seeking a modern and efficient tool to get code help, solve technical problems, and automate development tasks through N8N webhooks.
 
-## ✨ Características Principales
+## ✨ Key Features
 
-- 🎯 **Asistente Inteligente**: Respuestas contextuales para preguntas de programación
-- 🔗 **Integración N8N**: Conecta con webhooks personalizados para automatización
-- 🎨 **Interfaz Moderna**: Diseño Purple Heart con tema oscuro elegante  
-- 📱 **Responsive**: Se adapta a diferentes tamaños de panel
-- 💾 **Persistencia**: Guarda configuración y historial de conversaciones
-- ⚡ **Rápido**: Respuestas instantáneas sin interrumpir tu flujo de trabajo
-- 🔧 **Configurable**: Múltiples opciones de personalización
+- 🎯 **Intelligent Assistant**: Contextual responses for programming questions
+- 🔗 **N8N Integration**: Connect with custom webhooks for automation
+- 🎨 **Modern Interface**: Purple Heart design with elegant dark theme
+- 📱 **Responsive**: Adapts to different panel sizes
+- 💾 **Persistence**: Saves configuration and conversation history
+- ⚡ **Fast**: Instant responses without interrupting your workflow
+- 🔧 **Configurable**: Multiple customization options
 
-## 🚀 Instalación
+## 🚀 Installation
 
-1. **Desde VS Code Marketplace**:
-   - Abre VS Code
-   - Ve a Extensions (`Ctrl+Shift+X`)
-   - Busca "ChatBot RAG"
-   - Click en "Install"
+1. **From VS Code Marketplace**:
+   - Open VS Code
+   - Go to Extensions (`Ctrl+Shift+X`)
+   - Search for "AI Code Assistant"
+   - Click "Install"
 
-2. **Instalación manual**:
+2. **Manual Installation**:
    ```bash
    code --install-extension dgtovar.ai-code-assistant
    ```
 
-## 📖 Uso
+## 📖 Usage
 
-### Acceso Rápido
-- **Paleta de Comandos**: `Ctrl+Shift+P` → "AI Code Assistant"  
-- **Barra Lateral**: Panel "CHATBOT RAG" en el explorador
-- **Menú Contextual**: Click derecho en archivos
+### Quick Access
+- **Command Palette**: `Ctrl+Shift+P` → "AI Code Assistant"
+- **Sidebar**: "AI Code Assistant" panel in explorer
+- **Context Menu**: Right-click on files
 
-### Configuración N8N Webhook
-1. Abre el chatbot
-2. Configura tu webhook URL en la sección superior
-3. Click en "Probar Conexión" 
-4. ¡Listo! El chatbot usará tu webhook personalizado
+### N8N Webhook Configuration
+1. Open the chatbot
+2. Configure your webhook URL in the top section
+3. Click "Test Connection"
+4. Done! The chatbot will use your custom webhook
 
-### Comandos Disponibles
-- `chatbot.start`: Abrir ChatBot RAG
-- `chatbot.showInSidebar`: Mostrar en barra lateral
+### Available Commands
+- `chatbot.start`: Open AI Code Assistant
+- `chatbot.showInSidebar`: Show in sidebar
 
-## 🔧 Configuración
+## 🔧 Configuration
 
-### Webhook N8N
+### N8N Webhook
 ```json
 {
-  "message": "Tu pregunta aquí",
+  "message": "Your question here",
   "timestamp": "2025-09-26T10:30:00.000Z", 
-  "source": "vscode-chatbot"
+  "source": "ai-code-assistant"
 }
 ```
 
-**Respuesta esperada**:
-- JSON: `{"response": "Respuesta del bot"}`
-- Texto plano: `"Respuesta directa"`
+**Expected Response**:
+- JSON: `{"response": "Bot response"}`
+- Plain text: `"Direct response"`
 
-## 🎨 Capturas de Pantalla
+## 🎨 Screenshots
 
-- Interfaz principal con tema Purple Heart
-- Panel lateral integrado en VS Code  
-- Configuración de webhook N8N
-- Conversación ejemplo con código
+- Main interface with Purple Heart theme
+- Sidebar panel integrated in VS Code  
+- N8N webhook configuration
+- Example conversation with code
 
-## 🛠️ Desarrollo
+## 🛠️ Development
 
-### Requisitos
+### Requirements
 - Node.js >= 16.x
 - TypeScript >= 4.9.x
 - VS Code >= 1.74.0
 
-### Instalación local
+### Local Installation
 ```bash
 git clone https://github.com/diegogzt/hookn8n-vscode.git
 cd hookn8n-vscode
@@ -85,7 +85,7 @@ npm install
 npm run compile
 ```
 
-### Empaquetar
+### Package
 ```bash
 npm install -g vsce
 vsce package
@@ -94,35 +94,35 @@ vsce package
 ## 📝 Changelog
 
 ### v1.0.0
-- 🎉 Lanzamiento inicial
-- ✨ Interfaz Purple Heart con tema oscuro
-- 🔗 Integración completa con webhooks N8N
-- 📱 Diseño responsive y moderno
-- ⚡ Optimización de rendimiento
+- 🎉 Initial release
+- ✨ Purple Heart interface with dark theme
+- 🔗 Complete integration with N8N webhooks
+- 📱 Responsive and modern design
+- ⚡ Performance optimization
 
-## 🤝 Contribución
+## 🤝 Contributing
 
-¡Las contribuciones son bienvenidas! 
+Contributions are welcome!
 
-1. Fork el proyecto
-2. Crea tu branch: `git checkout -b feature/nueva-caracteristica`
-3. Commit tus cambios: `git commit -m 'Añadir nueva característica'`
-4. Push al branch: `git push origin feature/nueva-caracteristica`
-5. Abre un Pull Request
+1. Fork the project
+2. Create your branch: `git checkout -b feature/new-feature`
+3. Commit your changes: `git commit -m 'Add new feature'`
+4. Push to branch: `git push origin feature/new-feature`
+5. Open a Pull Request
 
-## 📄 Licencia
+## 📄 License
 
-Este proyecto está bajo la Licencia MIT. Consulta [LICENSE](LICENSE) para más detalles.
+This project is under the MIT License. See [LICENSE](LICENSE) for details.
 
-## 🐛 Reportar Bugs
+## 🐛 Report Bugs
 
-¿Encontraste un problema? [Reporta un issue](https://github.com/diegogzt/hookn8n-vscode/issues)
+Found a problem? [Report an issue](https://github.com/diegogzt/hookn8n-vscode/issues)
 
-## 📧 Contacto
+## 📧 Contact
 
-- **Autor**: diegogzt
+- **Author**: diegogzt
 - **GitHub**: [diegogzt](https://github.com/diegogzt)
 
 ---
 
-⭐ **¡Si te gusta esta extensión, dale una estrella en GitHub!**
+⭐ **If you like this extension, give it a star on GitHub!**

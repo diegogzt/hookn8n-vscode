@@ -24,17 +24,17 @@ export class ChatBotViewProvider
           }
         ),
         new ChatBotItem(
-          "⚙️ Configuración",
+          "⚙️ Configuration",
           "Configurar webhook y opciones",
           vscode.TreeItemCollapsibleState.Expanded
         ),
         new ChatBotItem(
-          "📚 Ayuda",
+          "📚 Help",
           "Información y documentación",
           vscode.TreeItemCollapsibleState.Expanded
         ),
       ]);
-    } else if (element.label === "⚙️ Configuración") {
+    } else if (element.label === "⚙️ Configuration") {
       return Promise.resolve([
         new ChatBotItem(
           "🔗 Configurar Webhook N8N",
@@ -57,7 +57,7 @@ export class ChatBotViewProvider
           }
         ),
       ]);
-    } else if (element.label === "📚 Ayuda") {
+    } else if (element.label === "📚 Help") {
       return Promise.resolve([
         new ChatBotItem(
           "❓ Cómo usar",

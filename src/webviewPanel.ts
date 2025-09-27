@@ -86,13 +86,13 @@ export class WebviewPanel {
             <div class="message bot-message">
                 <div class="message-content">
                     <div class="message-text">
-                        ¡Hola! Soy tu asistente ChatBot RAG. Puedo ayudarte con preguntas sobre programación.
+                        Hello! I'm your RAG ChatBot assistant. I can help you with programming questions.
                     </div>
                 </div>
             </div>
         </main>
         <div class="input-area">
-            <textarea id="messageInput" placeholder="Escribe tu pregunta aquí..." rows="1" maxlength="1000"></textarea>
+            <textarea id="messageInput" placeholder="Write your question here..." rows="1" maxlength="1000"></textarea>
             <button id="sendButton">
                 <img src="${sendIconUri}" alt="Enviar">
             </button>
@@ -118,7 +118,7 @@ export class WebviewPanel {
       console.error("Error handling message:", error);
       this.panel.webview.postMessage({
         command: "receiveMessage",
-        text: "Error: No se pudo procesar tu mensaje.",
+        text: "Error: Could not process your message.",
         timestamp: new Date().toLocaleTimeString(),
       });
     }

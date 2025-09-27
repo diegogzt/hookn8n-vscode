@@ -26,7 +26,7 @@ export class RagService {
       // Simulación de respuesta RAG por ahora
       const responses = [
         `Respuesta RAG para "${input}": Esta es una respuesta simulada del sistema RAG.`,
-        `Basándome en mi conocimiento, para "${input}" puedo sugerir lo siguiente...`,
+        `Based on my knowledge, for "${input}" I can suggest the following...`,
         `Analizado el contexto de "${input}", mi recomendación es...`,
       ];
 

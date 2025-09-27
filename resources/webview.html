@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta na          <button class="action-button" onclick="exportChat()">
+            <span class="icon-margin">📅</span>Export
+          </button>"viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Code Assistant</title>
     <link rel="stylesheet" href="../media/chatbot.css" />
   </head>
@@ -24,33 +26,33 @@
       <div class="webhook-config" id="webhookConfig">
         <div class="webhook-input-container">
           <label for="webhookInput" class="webhook-label">
-            <span style="color: var(--primary-light);"></span>🔗</span> Webhook de N8N (Opcional):
+            <span class="icon-primary">🔗</span> N8N Webhook (Optional):
           </label>
           <input
             type="url"
             id="webhookInput"
             class="webhook-input"
-            placeholder="https://tu-n8n.com/webhook/chatbot"
+            placeholder="https://your-n8n.com/webhook/chatbot"
           />
         </div>
         <div class="webhook-controls">
           <button id="testButton" class="test-button">
-            <span style="margin-right: 4px;">⚙️</span>Probar Conexión
+            <span class="icon-margin">⚙️</span>Test Connection
           </button>
           <div id="webhookStatus" class="webhook-status disconnected">
             <span class="status-indicator"></span>
-            Sin configurar
+            Not configured
           </div>
           <button id="toggleConfig" class="toggle-config">
-            <span style="margin-right: 4px;">❓</span>Ayuda
+            <span class="icon-margin">❓</span>Help
           </button>
         </div>
         <div id="webhookHelp" class="webhook-help">
-          <strong><span style="color: var(--primary-light);">💡</span> Cómo configurar:</strong><br />
-          1. Crea un webhook en N8N que reciba POST<br />
-          2. El webhook recibirá: {"message": "texto", "timestamp": "..."}<br />
-          3. Puede responder JSON: {"response": "respuesta"} o texto plano<br />
-          4. Pega la URL aquí y haz clic en "Probar Conexión"
+          <strong><span class="icon-primary">💡</span> How to configure:</strong><br />
+          1. Create an N8N webhook that receives POST<br />
+          2. The webhook will receive: {"message": "text", "timestamp": "..."}<br />
+          3. Can respond JSON: {"response": "response"} or plain text<br />
+          4. Paste the URL here and click "Test Connection"
         </div>
       </div>
 
@@ -63,7 +65,7 @@
       <div class="input-area">
         <textarea
           id="messageInput"
-          placeholder="Escribe tu pregunta aquí..."
+          placeholder="Type your question here..."
           rows="1"
           maxlength="1000"
           autocomplete="off"
@@ -79,7 +81,7 @@
         <span id="charCount">0/1000</span>
         <div class="action-buttons">
           <button class="action-button" onclick="clearChat()">
-            <span class="icon-margin">🗑️</span>Limpiar
+            <span class="icon-margin">🗑️</span>Clear
           </button>
           <button class="action-button" onclick="exportChat()">
             <span class="icon-margin">📥</span>Exportar
@@ -92,7 +94,7 @@
       // Funciones adicionales
       function clearChat() {
         if (
-          confirm("¿Estás seguro de que quieres limpiar toda la conversación?")
+          confirm("Are you sure you want to clear the entire conversation?")
         ) {
           const chatMessages = document.getElementById("chatMessages");
           chatMessages.innerHTML = "";
@@ -100,7 +102,7 @@
           setTimeout(() => {
             appendMessage(
               "bot",
-              "¡Conversación limpiada! Soy tu AI Code Assistant. ¿En qué puedo ayudarte ahora?",
+              "Conversation cleared! I'm your AI Code Assistant. How can I help you now?",
               getCurrentTime()
             );
           }, 500);
@@ -109,12 +111,12 @@
 
       function exportChat() {
         const messages = document.querySelectorAll(".message");
-        let chatText = "AI Code Assistant - Conversación exportada\n";
+        let chatText = "AI Code Assistant - Exported Conversation\n";
         chatText += "=".repeat(50) + "\n\n";
 
         messages.forEach((message) => {
           const isUser = message.classList.contains("user-message");
-          const sender = isUser ? "Usuario" : "AI Assistant";
+          const sender = isUser ? "User" : "AI Assistant";
           const text = message.querySelector(".message-text").textContent;
           const time = message.querySelector(".message-time").textContent;
 

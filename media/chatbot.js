@@ -1,7 +1,7 @@
-// Obtener referencia a la API de VS Code
+// Get VS Code API reference
 const vscode = acquireVsCodeApi();
 
-// Estado del chatbot
+// Chatbot state
 let isTyping = false;
 let messageCount = 0;
 let webhookUrl = "";
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initializeChatbot() {
-  // Elementos DOM
+  // DOM elements
   const sendButton = document.getElementById("sendButton");
   const messageInput = document.getElementById("messageInput");
   const chatMessages = document.getElementById("chatMessages");
@@ -22,17 +22,17 @@ function initializeChatbot() {
   const webhookConfig = document.querySelector(".webhook-config");
   const webhookStatus = document.getElementById("webhookStatus");
 
-  // Cargar configuración guardada
+  // Load saved configuration
   loadSavedConfig();
 
   // Event listeners
   setupEventListeners();
 
-  // Mensaje inicial
+  // Initial message
   addWelcomeMessage();
 
   function setupEventListeners() {
-    // Envío de mensajes
+    // Message sending
     sendButton.addEventListener("click", handleSendMessage);
 
     messageInput.addEventListener("keypress", (event) => {
@@ -42,13 +42,13 @@ function initializeChatbot() {
       }
     });
 
-    // Auto-resize del textarea
+    // Textarea auto-resize
     messageInput.addEventListener("input", () => {
       updateCharCount();
       autoResizeTextarea(messageInput);
     });
 
-    // Configuración del webhook
+    // Webhook configuration
     if (webhookInput) {
       webhookInput.addEventListener("input", handleWebhookChange);
       webhookInput.addEventListener("blur", saveWebhookUrl);
@@ -62,7 +62,7 @@ function initializeChatbot() {
       toggleConfig.addEventListener("click", toggleWebhookConfig);
     }
 
-    // Escuchar mensajes de la extensión
+    // Listen to extension messages
     window.addEventListener("message", handleExtensionMessage);
   }
 
@@ -74,10 +74,10 @@ function initializeChatbot() {
       updateCharCount();
       autoResizeTextarea(messageInput);
 
-      // Mostrar indicador de escritura
+      // Show typing indicator
       showTypingIndicator();
 
-      // Enviar mensaje a través del webhook o extensión
+      // Send message through webhook or extension
       sendMessageToBackend(messageText);
     }
   }
@@ -85,21 +85,21 @@ function initializeChatbot() {
   async function sendMessageToBackend(message) {
     try {
       if (webhookUrl) {
-        // Enviar a webhook de N8N
+        // Send to N8N webhook
         await sendToWebhook(message);
       } else {
-        // Enviar a la extensión
+        // Send to extension
         vscode.postMessage({
           command: "sendMessage",
           text: message,
         });
       }
     } catch (error) {
-      console.error("Error enviando mensaje:", error);
+      console.error("Error sending message:", error);
       hideTypingIndicator();
       appendMessage(
         "bot",
-        "❌ ERROR: No se pudo enviar el mensaje. Verifica la configuración del webhook.",
+        "❌ ERROR: Could not send message. Check webhook configuration.",
         getCurrentTime()
       );
     }
@@ -123,21 +123,21 @@ function initializeChatbot() {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
 
-      let botResponse = "Respuesta recibida del webhook";
+      let botResponse = "Response received from webhook";
       const contentType = response.headers.get("content-type") || "";
 
       if (contentType.includes("application/json")) {
-        // Respuesta en formato JSON
+        // JSON response
         try {
           const data = await response.json();
           botResponse =
             data.response || data.message || data.text || JSON.stringify(data);
         } catch (jsonError) {
-          console.warn("Error parseando JSON:", jsonError);
+          console.warn("Error parsing JSON:", jsonError);
           botResponse = await response.text();
         }
       } else {
-        // Respuesta en texto plano
+        // Plain text response
         botResponse = await response.text();
       }
 
@@ -145,11 +145,11 @@ function initializeChatbot() {
       appendMessage("bot", botResponse, getCurrentTime());
       updateWebhookStatus("connected");
     } catch (error) {
-      console.error("Error del webhook:", error);
+      console.error("Webhook error:", error);
       hideTypingIndicator();
       appendMessage(
         "bot",
-        `❌ ERROR DEL WEBHOOK: ${error.message}`,
+        `❌ WEBHOOK ERROR: ${error.message}`,
         getCurrentTime()
       );
       updateWebhookStatus("disconnected");
@@ -168,7 +168,7 @@ function initializeChatbot() {
         );
         break;
       case "configLoaded":
-        // Cargar configuración guardada
+        // Load saved configuration
         if (message.webhookUrl && webhookInput) {
           webhookInput.value = message.webhookUrl;
           webhookUrl = message.webhookUrl;
@@ -184,7 +184,7 @@ function initializeChatbot() {
     const messageElement = document.createElement("div");
     messageElement.classList.add("message", `${sender}-message`);
 
-    // Los avatares ahora usan CSS ::before para los iconos
+    // Avatars now use CSS ::before for icons
     messageElement.innerHTML = `
             <div class="message-avatar"></div>
             <div class="message-content">
@@ -199,7 +199,7 @@ function initializeChatbot() {
   }
 
   function formatMessage(text) {
-    // Formateo básico para código y enlaces
+    // Basic formatting for code and links
     return text
       .replace(/`([^`]+)`/g, "<code>$1</code>")
       .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
@@ -229,7 +229,7 @@ function initializeChatbot() {
     chatMessages.appendChild(typingElement);
     scrollToBottom();
 
-    // Deshabilitar botón de envío
+    // Disable send button
     sendButton.disabled = true;
   }
 
@@ -240,7 +240,7 @@ function initializeChatbot() {
       typingElement.remove();
     }
 
-    // Rehabilitar botón de envío
+    // Enable send button
     sendButton.disabled = false;
   }
 
@@ -251,7 +251,7 @@ function initializeChatbot() {
     if (charCount) {
       charCount.textContent = `${count}/${maxLength}`;
 
-      // Cambiar color según el límite
+      // Change color based on limit
       charCount.className = "";
       if (count > maxLength * 0.9) {
         charCount.classList.add("error");
@@ -273,7 +273,7 @@ function initializeChatbot() {
   }
 
   function getCurrentTime() {
-    return new Date().toLocaleTimeString("es-ES", {
+    return new Date().toLocaleTimeString("en-US", {
       hour: "2-digit",
       minute: "2-digit",
     });
@@ -285,7 +285,7 @@ function initializeChatbot() {
 
     if (url && isValidUrl(url)) {
       updateWebhookStatus("testing");
-      // Auto-test después de 1 segundo sin cambios
+      // Auto-test after 1 second without changes
       clearTimeout(webhookInput.testTimeout);
       webhookInput.testTimeout = setTimeout(() => {
         testWebhook(true);
@@ -296,7 +296,7 @@ function initializeChatbot() {
   }
 
   function saveWebhookUrl() {
-    // Guardar en almacenamiento local de VS Code
+    // Save to VS Code local storage
     vscode.postMessage({
       command: "saveConfig",
       key: "webhookUrl",
@@ -305,7 +305,7 @@ function initializeChatbot() {
   }
 
   function loadSavedConfig() {
-    // Solicitar configuración guardada
+    // Request saved configuration
     vscode.postMessage({
       command: "loadConfig",
     });
@@ -314,7 +314,7 @@ function initializeChatbot() {
   async function testWebhook(silent = false) {
     if (!webhookUrl || !isValidUrl(webhookUrl)) {
       if (!silent) {
-        alert("Por favor, ingresa una URL válida para el webhook");
+                    alert("Please enter a valid webhook URL");
       }
       updateWebhookStatus("disconnected");
       return;
@@ -329,7 +329,7 @@ function initializeChatbot() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          message: "[TEST] Test de conexión del AI Code Assistant",
+          message: "[TEST] AI Code Assistant connection test",
           timestamp: new Date().toISOString(),
           source: "ai-code-assistant",
           test: true,
@@ -339,7 +339,7 @@ function initializeChatbot() {
       if (response.ok) {
         updateWebhookStatus("connected");
         if (!silent) {
-          // Leer la respuesta para mostrarla
+          // Read response to show it
           const contentType = response.headers.get("content-type") || "";
           let responseText = "";
 
@@ -360,7 +360,7 @@ function initializeChatbot() {
 
           appendMessage(
             "bot",
-            `✅ CONEXIÓN EXITOSA: Respuesta - "${responseText}"`,
+            `✅ CONNECTION SUCCESSFUL: Response - "${responseText}"`,
             getCurrentTime()
           );
         }
@@ -372,7 +372,7 @@ function initializeChatbot() {
       if (!silent) {
         appendMessage(
           "bot",
-          `❌ ERROR DE CONEXIÓN: ${error.message}`,
+          `❌ CONNECTION ERROR: ${error.message}`,
           getCurrentTime()
         );
       }
@@ -385,14 +385,14 @@ function initializeChatbot() {
     webhookStatus.className = `webhook-status ${status}`;
 
     const statusTexts = {
-      connected: "● CONECTADO",
-      disconnected: "○ DESCONECTADO",
-      testing: "◐ PROBANDO...",
+      connected: "● CONNECTED",
+      disconnected: "○ DISCONNECTED",
+      testing: "◐ TESTING...",
     };
 
     webhookStatus.innerHTML = `
             <span class="status-indicator"></span>
-            ${statusTexts[status] || "Desconocido"}
+            ${statusTexts[status] || "Unknown"}
         `;
   }
 
@@ -401,8 +401,8 @@ function initializeChatbot() {
 
     webhookConfig.classList.toggle("collapsed");
     toggleConfig.textContent = webhookConfig.classList.contains("collapsed")
-      ? "Mostrar configuración"
-      : "Ocultar configuración";
+      ? "Show configuration"
+      : "Hide configuration";
   }
 
   function isValidUrl(string) {
@@ -418,15 +418,15 @@ function initializeChatbot() {
     setTimeout(() => {
       appendMessage(
         "bot",
-        `¡Hola! 👋 Soy tu AI Code Assistant.
+        `Hello! 👋 I'm your AI Code Assistant.
 
 ${
   webhookUrl
-    ? "🔗 Conectado a tu webhook de N8N"
-    : "⚙️ Configura un webhook para conectar con N8N"
+    ? "🔗 Connected to your N8N webhook"
+    : "⚙️ Configure a webhook to connect with N8N"
 }
 
-Puedo ayudarte con programación, desarrollo, automatización y mucho más. ¡Pregúntame lo que necesites!`,
+I can help you with programming, development, automation and much more. Ask me anything you need!`,
         getCurrentTime()
       );
     }, 500);
